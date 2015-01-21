@@ -109,6 +109,6 @@ UpgradeLog*.XML
 
 Artifacts
 Thumbs.db
-/OSVersion/*.nupkg
-/OSVersion/*.bak
-/OSVersion/lib
+/OsInfo/lib
+/OsInfo/*.nupkg
+/OsInfo/*.bak
