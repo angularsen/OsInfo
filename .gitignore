@@ -109,3 +109,4 @@ UpgradeLog*.XML
 
 Artifacts
 Thumbs.db
+/OSVersion/*.nupkg
