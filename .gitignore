@@ -111,3 +111,4 @@ Artifacts
 Thumbs.db
 /OSVersion/*.nupkg
 /OSVersion/*.bak
+/OSVersion/lib
