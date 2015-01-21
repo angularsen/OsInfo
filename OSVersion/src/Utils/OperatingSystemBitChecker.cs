@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace OSVersionUtils.Utils
 {
     /// <remarks>Source: http://1code.codeplex.com/SourceControl/changeset/view/39074#842775 </remarks>
-    internal static class OperatingSystemBitChecker
+    public static class OperatingSystemBitChecker
     {
         /// <summary>
         ///     The function determines whether the current operating system is a
