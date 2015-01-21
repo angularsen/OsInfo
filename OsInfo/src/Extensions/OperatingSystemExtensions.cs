@@ -38,7 +38,7 @@ namespace OsInfo.Extensions
         ///     Compares the major/minor version of <paramref name="os" /> and <paramref name="osVersion" />.
         /// </summary>
         /// <example><see cref="System.Environment.OSVersion" />.Equals(OSVersion.Win7)</example>
-        public static bool Equals(this OperatingSystem os, OsVersion osVersion)
+        public static bool IsEqualTo(this OperatingSystem os, OsVersion osVersion)
         {
             var osVersionInfo = GetOsVersionInfo(osVersion);
             return GetMajorMinorVersion(os.Version) == GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
