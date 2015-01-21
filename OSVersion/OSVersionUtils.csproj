@@ -8,8 +8,8 @@
     <ProjectGuid>{0451BAEF-DF2E-4B98-8644-94EE9415E389}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OSVersion</RootNamespace>
-    <AssemblyName>OSVersion</AssemblyName>
+    <RootNamespace>OSVersionUtils</RootNamespace>
+    <AssemblyName>OSVersionUtils</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -47,6 +47,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Utils\HashCodeHelper.cs" />
+    <Compile Include="src\Interop\Types.cs" />
+    <Compile Include="src\Interop\NativeMethods.cs" />
+    <Compile Include="src\Utils\OperatingSystemBitChecker.cs" />
+    <Compile Include="src\Extensions\OperatingSystemExtensions.cs" />
+    <Compile Include="src\OSProductType.cs" />
+    <Compile Include="src\OSVersion.cs" />
+    <Compile Include="src\OSVersionInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NuGetPackage.ps1" />
@@ -61,7 +69,10 @@
   <ItemGroup>
     <Folder Include="content\" />
     <Folder Include="lib\" />
-    <Folder Include="src\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Management" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
