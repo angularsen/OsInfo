@@ -1,6 +1,6 @@
-﻿namespace OSVersionUtils
+﻿namespace OsInfo
 {
-    public enum OSVersion
+    public enum OsVersion
     {
         Win32S,
         Win95,

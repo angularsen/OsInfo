@@ -1,6 +1,7 @@
 ﻿using System.Runtime.InteropServices;
+using OSVersionUtils.Interop;
 
-namespace OSVersionUtils.Interop
+namespace OsInfo.Interop
 {
     internal class NativeMethods
     {

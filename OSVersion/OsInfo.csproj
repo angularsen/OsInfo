@@ -52,9 +52,9 @@
     <Compile Include="src\Interop\NativeMethods.cs" />
     <Compile Include="src\Utils\OperatingSystemBitChecker.cs" />
     <Compile Include="src\Extensions\OperatingSystemExtensions.cs" />
-    <Compile Include="src\OSProductType.cs" />
-    <Compile Include="src\OSVersion.cs" />
-    <Compile Include="src\OSVersionInfo.cs" />
+    <Compile Include="src\OsProductType.cs" />
+    <Compile Include="src\OsVersion.cs" />
+    <Compile Include="src\OsVersionInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NuGetPackage.ps1" />

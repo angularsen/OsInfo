@@ -1,6 +1,6 @@
-﻿namespace OSVersionUtils
+﻿namespace OsInfo
 {
-    public enum OSProductType
+    public enum OsProductType
     {
         Invalid = 0,
         Workstation = 1,

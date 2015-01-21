@@ -3,7 +3,7 @@ using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
 
-namespace OSVersionUtils.Utils
+namespace OsInfo.Utils
 {
     /// <remarks>Source: http://1code.codeplex.com/SourceControl/changeset/view/39074#842775 </remarks>
     public static class OperatingSystemBitChecker

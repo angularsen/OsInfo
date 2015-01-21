@@ -1,36 +1,36 @@
 ﻿using System;
 using System.Linq;
-using OSVersionUtils.Utils;
+using OsInfo.Utils;
 
-namespace OSVersionUtils.Extensions
+namespace OsInfo.Extensions
 {
     public static class OperatingSystemExtensions
     {
-        private static readonly OSVersionInfo[] Versions;
+        private static readonly OsVersionInfo[] Versions;
 
         static OperatingSystemExtensions()
         {
             Versions = new[]
             {
-                new OSVersionInfo(OSVersion.Win32S, PlatformID.Win32S, 0, 0),
-                new OSVersionInfo(OSVersion.Win95, PlatformID.Win32Windows, 4, 0),
-                new OSVersionInfo(OSVersion.Win98, PlatformID.Win32Windows, 4, 10),
-                new OSVersionInfo(OSVersion.WinME, PlatformID.Win32Windows, 4, 90),
-                new OSVersionInfo(OSVersion.WinNT351, PlatformID.Win32NT, 3, 51),
-                new OSVersionInfo(OSVersion.WinNT4, PlatformID.Win32NT, 4, 0),
-                new OSVersionInfo(OSVersion.Win2000, PlatformID.Win32NT, 5, 0),
-                new OSVersionInfo(OSVersion.WinXP, PlatformID.Win32NT, 5, 1),
-                new OSVersionInfo(OSVersion.Win2003, PlatformID.Win32NT, 5, 2, OSProductType.Server),
-                new OSVersionInfo(OSVersion.WinXPx64, PlatformID.Win32NT, 5, 2, OSProductType.Workstation),
+                new OsVersionInfo(OsVersion.Win32S, PlatformID.Win32S, 0, 0),
+                new OsVersionInfo(OsVersion.Win95, PlatformID.Win32Windows, 4, 0),
+                new OsVersionInfo(OsVersion.Win98, PlatformID.Win32Windows, 4, 10),
+                new OsVersionInfo(OsVersion.WinME, PlatformID.Win32Windows, 4, 90),
+                new OsVersionInfo(OsVersion.WinNT351, PlatformID.Win32NT, 3, 51),
+                new OsVersionInfo(OsVersion.WinNT4, PlatformID.Win32NT, 4, 0),
+                new OsVersionInfo(OsVersion.Win2000, PlatformID.Win32NT, 5, 0),
+                new OsVersionInfo(OsVersion.WinXP, PlatformID.Win32NT, 5, 1),
+                new OsVersionInfo(OsVersion.Win2003, PlatformID.Win32NT, 5, 2, OsProductType.Server),
+                new OsVersionInfo(OsVersion.WinXPx64, PlatformID.Win32NT, 5, 2, OsProductType.Workstation),
                 //new OSVersionInfo(OSVersion.WinCE, PlatformID.WinCE ), // TODO: WinCE version
-                new OSVersionInfo(OSVersion.Vista, PlatformID.Win32NT, 6, 0, OSProductType.Workstation),
-                new OSVersionInfo(OSVersion.WinServer2008, PlatformID.Win32NT, 6, 0, OSProductType.Server),
-                new OSVersionInfo(OSVersion.WinServer2008R2, PlatformID.Win32NT, 6, 1, OSProductType.Server),
-                new OSVersionInfo(OSVersion.Win7, PlatformID.Win32NT, 6, 1, OSProductType.Workstation),
-                new OSVersionInfo(OSVersion.WinServer2012, PlatformID.Win32NT, 6, 2, OSProductType.Server),
-                new OSVersionInfo(OSVersion.Win8, PlatformID.Win32NT, 6, 2, OSProductType.Workstation),
-                new OSVersionInfo(OSVersion.WinServer2012R2, PlatformID.Win32NT, 6, 3, OSProductType.Server),
-                new OSVersionInfo(OSVersion.Win8Update1, PlatformID.Win32NT, 6, 3, OSProductType.Workstation)
+                new OsVersionInfo(OsVersion.Vista, PlatformID.Win32NT, 6, 0, OsProductType.Workstation),
+                new OsVersionInfo(OsVersion.WinServer2008, PlatformID.Win32NT, 6, 0, OsProductType.Server),
+                new OsVersionInfo(OsVersion.WinServer2008R2, PlatformID.Win32NT, 6, 1, OsProductType.Server),
+                new OsVersionInfo(OsVersion.Win7, PlatformID.Win32NT, 6, 1, OsProductType.Workstation),
+                new OsVersionInfo(OsVersion.WinServer2012, PlatformID.Win32NT, 6, 2, OsProductType.Server),
+                new OsVersionInfo(OsVersion.Win8, PlatformID.Win32NT, 6, 2, OsProductType.Workstation),
+                new OsVersionInfo(OsVersion.WinServer2012R2, PlatformID.Win32NT, 6, 3, OsProductType.Server),
+                new OsVersionInfo(OsVersion.Win8Update1, PlatformID.Win32NT, 6, 3, OsProductType.Workstation)
             };
         }
 
@@ -38,7 +38,7 @@ namespace OSVersionUtils.Extensions
         ///     Compares the major/minor version of <paramref name="os" /> and <paramref name="osVersion" />.
         /// </summary>
         /// <example><see cref="System.Environment.OSVersion" />.Equals(OSVersion.Win7)</example>
-        public static bool Equals(this OperatingSystem os, OSVersion osVersion)
+        public static bool Equals(this OperatingSystem os, OsVersion osVersion)
         {
             var osVersionInfo = GetOsVersionInfo(osVersion);
             return GetMajorMinorVersion(os.Version) == GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
@@ -79,7 +79,7 @@ namespace OSVersionUtils.Extensions
         ///     Compares the major/minor version of <paramref name="os" /> and <paramref name="osVersion" />.
         /// </summary>
         /// <example><see cref="System.Environment.OSVersion" />.IsGreaterThan(OSVersion.Win7)</example>
-        public static bool IsGreaterThan(this OperatingSystem os, OSVersion osVersion)
+        public static bool IsGreaterThan(this OperatingSystem os, OsVersion osVersion)
         {
             var osVersionInfo = GetOsVersionInfo(osVersion);
             return GetMajorMinorVersion(os.Version) > GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
@@ -89,7 +89,7 @@ namespace OSVersionUtils.Extensions
         ///     Compares the major/minor version of <paramref name="os" /> and <paramref name="osVersion" />.
         /// </summary>
         /// <example><see cref="System.Environment.OSVersion" />.IsGreaterThanOrEqualTo(OSVersion.Win7)</example>
-        public static bool IsGreaterThanOrEqualTo(this OperatingSystem os, OSVersion osVersion)
+        public static bool IsGreaterThanOrEqualTo(this OperatingSystem os, OsVersion osVersion)
         {
             var osVersionInfo = GetOsVersionInfo(osVersion);
             return GetMajorMinorVersion(os.Version) >= GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
@@ -99,7 +99,7 @@ namespace OSVersionUtils.Extensions
         ///     Compares the major/minor version of <paramref name="os" /> and <paramref name="osVersion" />.
         /// </summary>
         /// <example><see cref="System.Environment.OSVersion" />.IsLessThan(OSVersion.Win7)</example>
-        public static bool IsLessThan(this OperatingSystem os, OSVersion osVersion)
+        public static bool IsLessThan(this OperatingSystem os, OsVersion osVersion)
         {
             var osVersionInfo = GetOsVersionInfo(osVersion);
             return GetMajorMinorVersion(os.Version) < GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
@@ -109,7 +109,7 @@ namespace OSVersionUtils.Extensions
         ///     Compares the major/minor version of <paramref name="os" /> and <paramref name="osVersion" />.
         /// </summary>
         /// <example><see cref="System.Environment.OSVersion" />.IsLessThanOrEqualTo(OSVersion.Win7)</example>
-        public static bool IsLessThanOrEqualTo(this OperatingSystem os, OSVersion osVersion)
+        public static bool IsLessThanOrEqualTo(this OperatingSystem os, OsVersion osVersion)
         {
             var osVersionInfo = GetOsVersionInfo(osVersion);
             return GetMajorMinorVersion(os.Version) <= GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
@@ -120,7 +120,7 @@ namespace OSVersionUtils.Extensions
             return new Version(v.Major, v.Minor);
         }
 
-        private static OSVersionInfo GetOsVersionInfo(OSVersion osVersion)
+        private static OsVersionInfo GetOsVersionInfo(OsVersion osVersion)
         {
             var osVersionInfo = Versions.FirstOrDefault(v => v.OSVersion == osVersion);
             if (osVersionInfo == null)

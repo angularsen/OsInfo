@@ -1,23 +1,23 @@
 ﻿using System;
-using OSVersionUtils.Utils;
+using OsInfo.Utils;
 
-namespace OSVersionUtils
+namespace OsInfo
 {
-    internal sealed class OSVersionInfo : IComparable, ICloneable, IComparable<OSVersionInfo>, IEquatable<OSVersionInfo>
+    internal sealed class OsVersionInfo : IComparable, ICloneable, IComparable<OsVersionInfo>, IEquatable<OsVersionInfo>
     {
         private readonly int _majorVersion;
         private readonly int _minorVersion;
         private readonly OperatingSystem _operatingSystem;
         private readonly PlatformID _platformId;
-        private readonly OSProductType _osProductType;
-        private readonly OSVersion _osVersion;
+        private readonly OsProductType _osProductType;
+        private readonly OsVersion _osVersion;
 
-        public OSVersionInfo(
-            OSVersion osVersion,
+        public OsVersionInfo(
+            OsVersion osVersion,
             PlatformID platformId,
             int majorVersion,
             int minorVersion,
-            OSProductType osProductType = OSProductType.Invalid
+            OsProductType osProductType = OsProductType.Invalid
             )
         {
             _osVersion = osVersion;
@@ -48,32 +48,32 @@ namespace OSVersionUtils
             get { return _minorVersion; }
         }
 
-        public OSProductType OsProductType
+        public OsProductType OsProductType
         {
             get { return _osProductType; }
         }
 
-        public OSVersion OSVersion
+        public OsVersion OSVersion
         {
             get { return _osVersion; }
         }
 
         public object Clone()
         {
-            return new OSVersionInfo(OSVersion, PlatformId, MajorVersion, MinorVersion, OsProductType);
+            return new OsVersionInfo(OSVersion, PlatformId, MajorVersion, MinorVersion, OsProductType);
         }
 
         public int CompareTo(object o)
         {
-            return CompareTo(o as OSVersionInfo);
+            return CompareTo(o as OsVersionInfo);
         }
 
-        public int CompareTo(OSVersionInfo other)
+        public int CompareTo(OsVersionInfo other)
         {
             return new Version(MajorVersion, MinorVersion).CompareTo(new Version(other.MajorVersion, other.MinorVersion));
         }
 
-        public bool Equals(OSVersionInfo other)
+        public bool Equals(OsVersionInfo other)
         {
             return other.MajorVersion == MajorVersion && other.MinorVersion == MinorVersion &&
                    other.PlatformId == PlatformId && other.OsProductType == OsProductType;
@@ -81,7 +81,7 @@ namespace OSVersionUtils
 
         public override bool Equals(object o)
         {
-            var p = o as OSVersionInfo;
+            var p = o as OsVersionInfo;
             if (p == null)
                 return false;
 
@@ -98,17 +98,17 @@ namespace OSVersionUtils
             return OperatingSystem.ToString();
         }
 
-        public static bool operator ==(OSVersionInfo o, OSVersionInfo p)
+        public static bool operator ==(OsVersionInfo o, OsVersionInfo p)
         {
             return Equals(o, p);
         }
 
-        public static bool operator !=(OSVersionInfo o, OSVersionInfo p)
+        public static bool operator !=(OsVersionInfo o, OsVersionInfo p)
         {
             return !Equals(o, p);
         }
 
-        public static bool operator <(OSVersionInfo o, OSVersionInfo p)
+        public static bool operator <(OsVersionInfo o, OsVersionInfo p)
         {
             if (o == null)
             {
@@ -118,7 +118,7 @@ namespace OSVersionUtils
             return o.CompareTo(p) < 0;
         }
 
-        public static bool operator >(OSVersionInfo o, OSVersionInfo p)
+        public static bool operator >(OsVersionInfo o, OsVersionInfo p)
         {
             if (o == null)
             {
@@ -128,7 +128,7 @@ namespace OSVersionUtils
             return o.CompareTo(p) > 0;
         }
 
-        public static bool operator <=(OSVersionInfo o, OSVersionInfo p)
+        public static bool operator <=(OsVersionInfo o, OsVersionInfo p)
         {
             if (o == null)
             {
@@ -138,7 +138,7 @@ namespace OSVersionUtils
             return o.CompareTo(p) <= 0;
         }
 
-        public static bool operator >=(OSVersionInfo o, OSVersionInfo p)
+        public static bool operator >=(OsVersionInfo o, OsVersionInfo p)
         {
             if (o == null)
             {

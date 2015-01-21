@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace OSVersionUtils.Utils
+namespace OsInfo.Utils
 {
     //internal static class HashCodeHelperExtensions
     //{
