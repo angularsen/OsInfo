@@ -54,3 +54,6 @@ Less than or equal to Win7      : False
 Less than Win8                  : False
 Less than Win7                  : False
 ```
+
+## Notes
+Windows 8.1 will report as Windows 8 (6.2.9200) for applications that do not explicitly specify compatibility with Windows 8.1 in their app manifest. [Read more](http://stackoverflow.com/a/17406963/134761).
