@@ -1,6 +1,6 @@
 # OsInfo - Operating System Info
 Compare operating system versions, check if OS is 32/64-bit and what service pack is installed.
-Supports .NET 3.5 Client and later.
+Targets .NET 3.5 Client. Supports Windows 8.1 and all previous Windows versions.
 
 ## NuGet
 To install, type ```Install-package OsInfo``` into Package Manager Console in Visual Studio or [visit the nuget page](http://www.nuget.org/packages/osinfo).
