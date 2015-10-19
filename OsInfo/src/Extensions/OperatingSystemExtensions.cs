@@ -6,6 +6,16 @@ namespace OsInfo.Extensions
 {
     public static class OperatingSystemExtensions
     {
+        /// <summary>
+        ///     List of operating system versions based on:
+        ///     https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
+        /// </summary>
+        /// <remarks>
+        ///     For applications that have been manifested for Windows 8.1 or Windows 10. Applications not manifested for
+        ///     Windows 8.1 or Windows 10 will return the Windows 8 OS version value (6.2). To manifest your applications for
+        ///     Windows 8.1 or Windows 10, refer to Targeting your application for Windows:
+        ///     https://msdn.microsoft.com/en-us/library/windows/desktop/dn481241(v=vs.85).aspx
+        /// </remarks>
         private static readonly OsVersionInfo[] Versions;
 
         static OperatingSystemExtensions()
@@ -30,7 +40,8 @@ namespace OsInfo.Extensions
                 new OsVersionInfo(OsVersion.WinServer2012, PlatformID.Win32NT, 6, 2, OsProductType.Server),
                 new OsVersionInfo(OsVersion.Win8, PlatformID.Win32NT, 6, 2, OsProductType.Workstation),
                 new OsVersionInfo(OsVersion.WinServer2012R2, PlatformID.Win32NT, 6, 3, OsProductType.Server),
-                new OsVersionInfo(OsVersion.Win8Update1, PlatformID.Win32NT, 6, 3, OsProductType.Workstation)
+                new OsVersionInfo(OsVersion.Win8Update1, PlatformID.Win32NT, 6, 3, OsProductType.Workstation),
+                new OsVersionInfo(OsVersion.Win10, PlatformID.Win32NT, 10, 0, OsProductType.Workstation)
             };
         }
 
