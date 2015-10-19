@@ -2,17 +2,17 @@
 <package >
   <metadata>
     <id>OsInfo</id>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
     <title>OsInfo</title>
     <authors>Andreas Gullberg Larsen</authors>
     <owners>Andreas Gullberg Larsen</owners>
     <description>
-      Compare operating system versions, check if OS is 32/64-bit and what service pack is installed.
+      Compare operating system versions, 32/64-bit and service packs.
     </description>
-    <releaseNotes>
+    <releaseNotes>Support Win10
     </releaseNotes>
     <summary>
-      Compare operating system versions, check if OS is 32/64-bit and what service pack is installed.
+      Compare operating system versions, 32/64-bit and service packs.
     </summary>
     <language>en-US</language>
     <projectUrl>https://github.com/anjdreas/OsInfo</projectUrl>
