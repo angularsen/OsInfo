@@ -1,5 +1,8 @@
-﻿namespace OsInfo
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace OsInfo
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum OsVersion
     {
         Win32S,

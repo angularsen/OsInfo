@@ -19,14 +19,12 @@ namespace OsInfo.Utils
         public static bool Is64BitOperatingSystem()
         {
             if (IntPtr.Size == 8) // 64-bit programs run only on Win64
-            {
                 return true;
-            }
             // Detect whether the current process is a 32-bit process 
             // running on a 64-bit system.
             bool flag;
-            return ((DoesWin32MethodExist("kernel32.dll", "IsWow64Process") &&
-                     IsWow64Process(GetCurrentProcess(), out flag)) && flag);
+            return DoesWin32MethodExist("kernel32.dll", "IsWow64Process") &&
+                   IsWow64Process(GetCurrentProcess(), out flag) && flag;
         }
 
         /// <summary>
@@ -78,17 +76,19 @@ namespace OsInfo.Utils
                 // Build a ConnectionOptions object for the remote connection 
                 // if you plan to connect to the remote with a different user 
                 // name and password than the one you are currently using.
-                options = new ConnectionOptions();
-                options.Username = userName;
-                options.Password = password;
-                options.Authority = "NTLMDOMAIN:" + domain;
+                options = new ConnectionOptions
+                {
+                    Username = userName,
+                    Password = password,
+                    Authority = "NTLMDOMAIN:" + domain
+                };
             }
             // Else the connection will use the currently logged-on user
 
             // Make a connection to the target computer.
-            var scope = new ManagementScope("\\\\" +
-                                            (string.IsNullOrEmpty(machineName) ? "." : machineName) +
-                                            "\\root\\cimv2", options);
+            ManagementScope scope = new ManagementScope("\\\\" +
+                                                        (string.IsNullOrEmpty(machineName) ? "." : machineName) +
+                                                        "\\root\\cimv2", options);
             scope.Connect();
 
             // Query Win32_Processor.AddressWidth which dicates the current 
@@ -99,16 +99,18 @@ namespace OsInfo.Utils
             // Note: Win32_OperatingSystem.OSArchitecture tells the bitness
             // of OS too. On a 32-bit OS, it would be "32-bit". However, it 
             // is only available on Windows Vista and newer OS.
-            var query = new ObjectQuery(
+            ObjectQuery query = new ObjectQuery(
                 "SELECT AddressWidth FROM Win32_Processor");
 
             // Perform the query and get the result.
-            using (var searcher = new ManagementObjectSearcher(scope, query))
-            using (var queryCollection = searcher.Get())
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, query))
             {
-                return
-                    queryCollection.Cast<ManagementObject>()
-                        .Any(queryObj => queryObj["AddressWidth"].ToString() == "64");
+                using (ManagementObjectCollection queryCollection = searcher.Get())
+                {
+                    return
+                        queryCollection.Cast<ManagementObject>()
+                            .Any(queryObj => queryObj["AddressWidth"].ToString() == "64");
+                }
             }
         }
 
@@ -124,12 +126,10 @@ namespace OsInfo.Utils
         /// </returns>
         private static bool DoesWin32MethodExist(string moduleName, string methodName)
         {
-            var moduleHandle = GetModuleHandle(moduleName);
+            IntPtr moduleHandle = GetModuleHandle(moduleName);
             if (moduleHandle == IntPtr.Zero)
-            {
                 return false;
-            }
-            return (GetProcAddress(moduleHandle, methodName) != IntPtr.Zero);
+            return GetProcAddress(moduleHandle, methodName) != IntPtr.Zero;
         }
 
         [DllImport("kernel32.dll")]

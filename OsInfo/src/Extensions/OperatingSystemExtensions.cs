@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using OsInfo.Utils;
 
 namespace OsInfo.Extensions
 {
+    [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]
     public static class OperatingSystemExtensions
     {
         /// <summary>
@@ -41,28 +43,18 @@ namespace OsInfo.Extensions
                 new OsVersionInfo(OsVersion.WinServer2012R2, PlatformID.Win32NT, 6, 3, OsProductType.Server),
                 new OsVersionInfo(OsVersion.Win8Update1, PlatformID.Win32NT, 6, 3, OsProductType.Workstation),
                 new OsVersionInfo(OsVersion.Win10, PlatformID.Win32NT, 10, 0, OsProductType.Workstation),
-                new OsVersionInfo(OsVersion.WinServer2016, PlatformID.Win32NT, 10, 0, OsProductType.Server),
+                new OsVersionInfo(OsVersion.WinServer2016, PlatformID.Win32NT, 10, 0, OsProductType.Server)
             };
         }
 
         /// <summary>
-        ///     Compares the major/minor version of <paramref name="os" /> and <paramref name="osVersion" />.
-        /// </summary>
-        /// <example><see cref="System.Environment.OSVersion" />.Equals(OSVersion.Win7)</example>
-        public static bool IsEqualTo(this OperatingSystem os, OsVersion osVersion)
-        {
-            var osVersionInfo = GetOsVersionInfo(osVersion);
-            return GetMajorMinorVersion(os.Version) == GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
-        }
-
-        /// <summary>
-        ///     Compares the major/minor version of <paramref name="os" /> and <paramref name="osVersion" />.
+        ///     Compares the major/minor version of <paramref name="os" /> and <paramref name="os" />.
         /// </summary>
         /// <example><see cref="System.Environment.OSVersion" />.GetServicePackVersion()</example>
         public static int? GetServicePackVersion(this OperatingSystem os)
         {
             int result;
-            var numericString =
+            string numericString =
                 os.ServicePack
                     .Replace("Service Pack ", string.Empty)
                     .Replace("SP", string.Empty)
@@ -81,9 +73,21 @@ namespace OsInfo.Extensions
         /// </summary>
         /// <example><see cref="System.Environment.OSVersion" />.Is64Bit()</example>
         /// <param name="os">IGNORED, expected to use <see cref="Environment.OSVersion" />.</param>
+        // ReSharper disable once UnusedParameter.Global
         public static bool Is64Bit(this OperatingSystem os)
         {
+            // Environment.Is64BitOperatingSystem is added in later .NET versions
             return OperatingSystemBitChecker.Is64BitOperatingSystem();
+        }
+
+        /// <summary>
+        ///     Compares the major/minor version of <paramref name="os" /> and <paramref name="osVersion" />.
+        /// </summary>
+        /// <example><see cref="System.Environment.OSVersion" />.Equals(OSVersion.Win7)</example>
+        public static bool IsEqualTo(this OperatingSystem os, OsVersion osVersion)
+        {
+            OsVersionInfo osVersionInfo = GetOsVersionInfo(osVersion);
+            return GetMajorMinorVersion(os.Version) == GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
         }
 
         /// <summary>
@@ -92,7 +96,7 @@ namespace OsInfo.Extensions
         /// <example><see cref="System.Environment.OSVersion" />.IsGreaterThan(OSVersion.Win7)</example>
         public static bool IsGreaterThan(this OperatingSystem os, OsVersion osVersion)
         {
-            var osVersionInfo = GetOsVersionInfo(osVersion);
+            OsVersionInfo osVersionInfo = GetOsVersionInfo(osVersion);
             return GetMajorMinorVersion(os.Version) > GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
         }
 
@@ -102,7 +106,7 @@ namespace OsInfo.Extensions
         /// <example><see cref="System.Environment.OSVersion" />.IsGreaterThanOrEqualTo(OSVersion.Win7)</example>
         public static bool IsGreaterThanOrEqualTo(this OperatingSystem os, OsVersion osVersion)
         {
-            var osVersionInfo = GetOsVersionInfo(osVersion);
+            OsVersionInfo osVersionInfo = GetOsVersionInfo(osVersion);
             return GetMajorMinorVersion(os.Version) >= GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
         }
 
@@ -112,7 +116,7 @@ namespace OsInfo.Extensions
         /// <example><see cref="System.Environment.OSVersion" />.IsLessThan(OSVersion.Win7)</example>
         public static bool IsLessThan(this OperatingSystem os, OsVersion osVersion)
         {
-            var osVersionInfo = GetOsVersionInfo(osVersion);
+            OsVersionInfo osVersionInfo = GetOsVersionInfo(osVersion);
             return GetMajorMinorVersion(os.Version) < GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
         }
 
@@ -122,7 +126,7 @@ namespace OsInfo.Extensions
         /// <example><see cref="System.Environment.OSVersion" />.IsLessThanOrEqualTo(OSVersion.Win7)</example>
         public static bool IsLessThanOrEqualTo(this OperatingSystem os, OsVersion osVersion)
         {
-            var osVersionInfo = GetOsVersionInfo(osVersion);
+            OsVersionInfo osVersionInfo = GetOsVersionInfo(osVersion);
             return GetMajorMinorVersion(os.Version) <= GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
         }
 
@@ -133,7 +137,7 @@ namespace OsInfo.Extensions
 
         private static OsVersionInfo GetOsVersionInfo(OsVersion osVersion)
         {
-            var osVersionInfo = Versions.FirstOrDefault(v => v.OSVersion == osVersion);
+            OsVersionInfo osVersionInfo = Versions.FirstOrDefault(v => v.OsVersion == osVersion);
             if (osVersionInfo == null)
                 throw new NotImplementedException("OSVersion:" + osVersion);
             return osVersionInfo;

@@ -3,11 +3,11 @@ using OsInfo.Extensions;
 
 namespace OsInfo.App
 {
-    internal class Program
+    internal static class Program
     {
         public static void Main(string[] args)
         {
-            var currentOs = Environment.OSVersion;
+            OperatingSystem currentOs = Environment.OSVersion;
             Console.WriteLine("Current OS: " + currentOs);
             Console.WriteLine("Service pack: " + (currentOs.GetServicePackVersion() ?? (object) "(null)"));
 

@@ -1,5 +1,4 @@
 ﻿using System.Runtime.InteropServices;
-using OSVersionUtils.Interop;
 
 namespace OsInfo.Interop
 {
@@ -8,18 +7,6 @@ namespace OsInfo.Interop
         private NativeMethods()
         {
         }
-
-        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        public static extern bool GetVersionEx
-            (
-            [In, Out] OSVERSIONINFO osVersionInfo
-            );
-
-        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        public static extern bool GetVersionEx
-            (
-            [In, Out] OSVERSIONINFOEX osVersionInfoEx
-            );
 
         //			[ DllImport( "kernel32.dll", SetLastError = true ) ]
         //			public static extern bool VerifyVersionInfo
@@ -31,5 +18,17 @@ namespace OsInfo.Interop
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
         public static extern void GetSystemInfo([MarshalAs(UnmanagedType.Struct)] ref SYSTEM_INFO lpSystemInfo);
+
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern bool GetVersionEx
+        (
+            [In] [Out] OSVERSIONINFO osVersionInfo
+        );
+
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern bool GetVersionEx
+        (
+            [In] [Out] OSVERSIONINFOEX osVersionInfoEx
+        );
     }
 }
