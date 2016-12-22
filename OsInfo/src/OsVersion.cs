@@ -20,6 +20,7 @@
         Win8,
         WinServer2012R2,
         Win8Update1,
-        Win10
+        Win10,
+        WinServer2016
     }
 }

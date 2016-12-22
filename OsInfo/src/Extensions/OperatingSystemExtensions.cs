@@ -40,7 +40,8 @@ namespace OsInfo.Extensions
                 new OsVersionInfo(OsVersion.Win8, PlatformID.Win32NT, 6, 2, OsProductType.Workstation),
                 new OsVersionInfo(OsVersion.WinServer2012R2, PlatformID.Win32NT, 6, 3, OsProductType.Server),
                 new OsVersionInfo(OsVersion.Win8Update1, PlatformID.Win32NT, 6, 3, OsProductType.Workstation),
-                new OsVersionInfo(OsVersion.Win10, PlatformID.Win32NT, 10, 0, OsProductType.Workstation)
+                new OsVersionInfo(OsVersion.Win10, PlatformID.Win32NT, 10, 0, OsProductType.Workstation),
+                new OsVersionInfo(OsVersion.WinServer2016, PlatformID.Win32NT, 10, 0, OsProductType.Server),
             };
         }
 
