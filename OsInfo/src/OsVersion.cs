@@ -12,7 +12,6 @@
         WinXP,
         Win2003,
         WinXPx64,
-        //WinCE,
         Vista,
         WinServer2008,
         WinServer2008R2,

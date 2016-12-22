@@ -32,7 +32,6 @@ namespace OsInfo.Extensions
                 new OsVersionInfo(OsVersion.WinXP, PlatformID.Win32NT, 5, 1),
                 new OsVersionInfo(OsVersion.Win2003, PlatformID.Win32NT, 5, 2, OsProductType.Server),
                 new OsVersionInfo(OsVersion.WinXPx64, PlatformID.Win32NT, 5, 2, OsProductType.Workstation),
-                //new OSVersionInfo(OSVersion.WinCE, PlatformID.WinCE ), // TODO: WinCE version
                 new OsVersionInfo(OsVersion.Vista, PlatformID.Win32NT, 6, 0, OsProductType.Workstation),
                 new OsVersionInfo(OsVersion.WinServer2008, PlatformID.Win32NT, 6, 0, OsProductType.Server),
                 new OsVersionInfo(OsVersion.WinServer2008R2, PlatformID.Win32NT, 6, 1, OsProductType.Server),
