@@ -5,7 +5,6 @@ namespace OsInfo
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum OsVersion
     {
-        Unknown,
         Win32S,
         Win95,
         Win98,
