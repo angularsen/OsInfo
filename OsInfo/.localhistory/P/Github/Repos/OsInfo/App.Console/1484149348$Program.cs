@@ -9,7 +9,6 @@ namespace OsInfo.App
         {
             OperatingSystem currentOs = Environment.OSVersion;
             Console.WriteLine("Current OS: " + currentOs);
-            Console.WriteLine("OsVersion: " + currentOs.GetOsVersion());
             Console.WriteLine("Service pack: " + (currentOs.GetServicePackVersion() ?? (object) "(null)"));
 
             // In .NET 4.5+ you can use Environment.Is64BitOperatingSystem instead

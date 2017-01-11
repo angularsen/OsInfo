@@ -9,7 +9,6 @@ namespace OsInfo.App
         {
             OperatingSystem currentOs = Environment.OSVersion;
             Console.WriteLine("Current OS: " + currentOs);
-            Console.WriteLine("OsVersion: " + currentOs.GetOsVersion());
             Console.WriteLine("Service pack: " + (currentOs.GetServicePackVersion() ?? (object) "(null)"));
 
             // In .NET 4.5+ you can use Environment.Is64BitOperatingSystem instead
@@ -44,6 +43,7 @@ https://msdn.microsoft.com/en-us/library/windows/desktop/dn481241(v=vs.85).aspx
             Console.WriteLine("Less than Win8                  : " + currentOs.IsLessThan(OsVersion.Win8));
             Console.WriteLine("Less than Win7                  : " + currentOs.IsLessThan(OsVersion.Win7));
             Console.WriteLine();
+            Console.WriteLine("OsVersion                       : " + currentOs.GetOsVersion());
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey(true);
         }

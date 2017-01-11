@@ -130,22 +130,6 @@ namespace OsInfo.Extensions
             return GetMajorMinorVersion(os.Version) <= GetMajorMinorVersion(osVersionInfo.OperatingSystem.Version);
         }
 
-        /// <summary>
-        ///   Returns OsVersion
-        /// </summary>
-        public static OsVersion GetOsVersion(this OperatingSystem os)
-        {
-          foreach (var version in Versions)
-          {
-            if (os.IsEqualTo(version.OsVersion))
-            {
-              return version.OsVersion;
-            }
-          }
-          return OsVersion.Unknown;
-        }
-
-
         private static Version GetMajorMinorVersion(Version v)
         {
             return new Version(v.Major, v.Minor);
